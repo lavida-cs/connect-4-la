@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/fonts.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+    <title>Connect 4 Game | Lavida</title>
+</head>
+
+<body>
+    
+    <div id="modal-screen" class="">
+        <div id="setup-modal" class="">
+            <div class="logo">
+                <div class="disc pink"></div>
+                <div class="disc orange"></div>
+                <div class="disc orange"></div>
+                <div class="disc pink"></div>
+            </div>
+            
+            <div id="setup-action-btns">
+                <button class="btn pink-bg" id="vs-cpu-btn">PLAY VS CPU</button>
+                <button class="btn orange-bg" id="vs-player-btn">PLAY VS PLAYER</button>
+                <button class="btn white-bg" id="rules-btn">RULES</button>
+            </div>
+        </div>
+        
+        <!-- RULES MODAL -->
+        <div id="rules-modal" class="hide">
+            <div id="modal-title">RULES</div>
+            <div id="objective-wrapper">
+                <p class="heading">OBJECTIVE</p>
+                <p id="paragraph">Be the first player to connect 4 of the marker colored disc in a row (either vertically, horizontally or diagonally)
+                </p>
+            </div>
+            <div id="how-to-play-wrapper">
+                <p class="heading">HOW TO PLAY</p>
+                <div class="rule">
+                    <p class="number">1</p>
+                    <p class="rule-text">Red goes first in the first game</p>
+                </div>
+                <div class="rule">
+                    <p class="number">2</p>
+                    <p class="rule-text">Player must alternate turns, and only one disc can be dropped in each turn</p>
+                </div>
+                <div class="rule">
+                    <p class="number">3</p>
+                    <p class="rule-text">The game ends when there is a 4-in-a-row or a stalemate</p>
+                </div>
+                <div class="rule">
+                    <p class="number">4</p>
+                    <p class="rule-text">The starter of the previous game, goes second in the next game</p>
+                </div>
+            </div>
+            <button id="close-rules-btn">
+                <img id="check-icon" src="/resource/check.svg" alt="">
+            </button>
+        </div>
+    </div>
+    
+    <!-- Game Screen -->
+    <div id="connect-4" class="hide">
+        <div class="header">
+            <button class="game-btn" id="menu-btn">MENU</button>
+            <div class="logo">
+                <div class="disc pink"></div>
+                <div class="disc orange"></div>
+                <div class="disc orange"></div>
+                <div class="disc pink"></div>
+            </div>
+            <button class="game-btn" id="restart-btn">RESTART</button>
+        </div>
+        <div id="score-boards">
+            <div class="score-board">
+                <p class="player">PLAYER 1</p>
+                <p id="p1-score" class="score-count">0</p>
+            </div>
+            <div class="score-board">
+                <p class="player">PLAYER 2</p>
+                <p id="p2-score" class="score-count">0</p>
+            </div>
+        </div>
+        <div id="game-board">
+            <div id="cells">
+            </div>
+            <div id="turn-indicator" class="">
+                <p class="msg">PLAYER <span id="player-turn">1</span>'S TURN</p>
+                <p id="timer">30s</p>
+            </div>
+            <div class="hide" id="win-indicator">
+                <p class="msg">PLAYER <span id="player-winner">1</span></p>
+                <p id="win-text">WIN</p>
+                <button id="play-again-btn">PLAY AGAIN</button>
+            </div>
+        </div>
+        <div id="win-overlay" class=""></div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="/js/board.js"></script>
+    <script src="./js/app.js" type="module"></script>
+</body>
+
+</html>
