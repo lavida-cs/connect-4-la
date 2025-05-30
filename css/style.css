@@ -45,8 +45,8 @@ body {
     justify-content: center;
 }
 
-/** ============== Setup Modal*/
-#setup-modal {
+/** ============== Menu Modal*/
+#menu-modal {
     width: 90%;
     animation: reveal 0.3s ease;
 }
@@ -278,6 +278,11 @@ body {
     border-radius: 100%;
     background: var(--deep-purple-200);
     box-shadow: inset 0 13px 0 var(--black);
+    transition: filter 0.3s ease;
+}
+
+.cell:hover{
+    filter: brightness(0.8);
 }
 
 .marker {
@@ -290,13 +295,13 @@ body {
 .marker.pink {
     background: var(--pink-300);
     box-shadow: inset 0 7px 0 rgba(0, 0, 0, 0.4);
-    animation: marker .5s ease-in;
+    animation: marker .2s ease-in;
 }
 
 .marker.orange{
     background: var(--orange-100);
     box-shadow: inset 0 7px 0 rgba(0, 0, 0, 0.4);
-    animation: marker .5s ease-in;
+    animation: marker .2s ease-in;
 }
 
 
@@ -392,7 +397,7 @@ body {
 
 @keyframes marker {
     0% {
-        transform: translateY(-100px);
+        transform: translateY(-200px);
         opacity: 0;
         box-shadow: none;
     }

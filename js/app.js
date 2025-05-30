@@ -1,50 +1,55 @@
 import { gameState } from './gamestate.js'
 import { Connect4Game } from './connect4.js'
 
-const connect4 = {
-    // dom
-    el: {
-        cpuBtn: document.getElementById('vs-cpu-btn'),
-        playerBtn: document.getElementById('vs-player-btn'),
-        rulesBtn: document.getElementById('rules-btn'),
-        modalScreen: document.getElementById('modal-screen'),
-        gameScreen: document.getElementById('connect-4'),
-        setupModal: document.getElementById('setup-modal'),
-        rulesModal: document.getElementById('rules-modal')
-    },
+class App {
+    constructor() {
+        this.connect4Game = new Connect4Game()
+    }
     
     init() {
+        this.cacheDom()
         this.bindListeners()
-    },
+    }
     
-    // bind listeners
+    cacheDom() {
+        const $ = (s) => document.getElementById(s)
+        this.cpuBtn = $('vs-cpu-btn')
+        this.playerBtn = $('vs-player-btn')
+        this.rulesBtn = $('rules-btn')
+        this.modalScreen = $('modal-screen')
+        this.rulesModal = $('rules-modal')
+        this.menuModal = $('menu-modal')
+        this.gameScreen = $('connect-4')
+        this.closeRulesBtn = $('close-rules-btn')
+    }
+    
     bindListeners() {
-        this.el.cpuBtn.addEventListener('click', () => this.playGame('cpu'))
-        this.el.playerBtn.addEventListener('click', () => this.playGame('player'))
-        this.el.rulesBtn.addEventListener('click', () => this.renderRulesModal())
-    },
+        this.cpuBtn?.addEventListener('click', () => this.playGame('cpu'))
+        this.playerBtn?.addEventListener('click', () => this.playGame('player'))
+        this.rulesBtn?.addEventListener('click', () => this.toggleRulesModal())
+        this.closeRulesBtn?.addEventListener('click',()=> this.toggleRulesModal())
+    }
     
-    playGame(choosenMode) {
+    playGame(mode) {
+        gameState.mode = mode
         gameState.running = true
-        gameState.mode = choosenMode;
         this.renderGameScreen()
-        const connect4Game = new Connect4Game()
-        connect4Game.init()
-    },
+        this.connect4Game.init()
+    }
     
-    renderGameScreen(){
-        this.el.modalScreen.classList.toggle('hide')
-        this.el.gameScreen.classList.toggle('hide')
-    },
+    renderGameScreen() {
+        this.modalScreen.classList.toggle('hide')
+        this.gameScreen.classList.toggle('hide')
+    }
     
-    renderRulesModal() {
-        this.el.setupModal.classList.toggle('hide')
-        this.el.rulesModal.classList.toggle('hide')
-        document.getElementById('close-rules-btn').addEventListener('click', () => this.renderRulesModal())
-        
+    toggleRulesModal() {
+        this.menuModal.classList.toggle('hide')
+        this.rulesModal.classList.toggle('hide')
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    connect4.init()
+
+document.addEventListener('DOMContentLoaded', function() {
+    const connect4App = new App()
+    connect4App.init()
 })

@@ -14,7 +14,7 @@ class Board {
         for (let i = 1; i <= this.totalCell; i++) {
             const cell = document.createElement('div')
             cell.className = 'cell'
-            cell.innerHTML = `<div class="marker" id=${i}></div>`
+            cell.innerHTML = `<div class="marker" id=${i-1}></div>`
             this.cells.appendChild(cell)
         }
     }
